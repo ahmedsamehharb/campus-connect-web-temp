@@ -25,6 +25,15 @@ function ResetPasswordContent() {
   const [errors, setErrors] = useState<{ password?: string; confirmPassword?: string }>({});
   const [loading, setLoading] = useState(false);
 
+  // Prevent any redirects while on reset password page
+  useEffect(() => {
+    // This ensures we stay on this page even if auth state changes
+    const currentPath = window.location.pathname;
+    if (currentPath !== '/auth/reset-password') {
+      return;
+    }
+  }, []);
+
   useEffect(() => {
     const verifyResetToken = async () => {
       try {

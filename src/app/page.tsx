@@ -17,26 +17,40 @@ export default function LoginPage() {
   // Check for password reset token in hash and redirect to reset page
   // This must run FIRST before the authenticated user redirect
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const hash = window.location.hash;
-      // Check if this is a password reset link (has recovery token in hash)
-      if (hash && (hash.includes('type=recovery') || hash.includes('access_token'))) {
-        // Redirect to reset password page with the hash
-        window.location.href = `/auth/reset-password${hash}`;
-        return;
-      }
+    if (typeof window === 'undefined') return;
+    
+    const hash = window.location.hash;
+    const pathname = window.location.pathname;
+    
+    // If we're already on reset password page, don't do anything
+    if (pathname === '/auth/reset-password') {
+      return;
+    }
+    
+    // Check if this is a password reset link (has recovery token in hash)
+    if (hash && (hash.includes('type=recovery') || hash.includes('access_token'))) {
+      // Immediately redirect to reset password page with the hash
+      window.location.replace(`/auth/reset-password${hash}`);
+      return;
     }
   }, []);
 
   // Redirect authenticated users to dashboard
-  // BUT NOT if they have a password reset token in the URL
+  // BUT NOT if they have a password reset token in the URL or are on reset page
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const hash = window.location.hash;
-      // Don't redirect if there's a recovery token (password reset flow)
-      if (hash && (hash.includes('type=recovery') || hash.includes('access_token'))) {
-        return;
-      }
+    if (typeof window === 'undefined') return;
+    
+    const hash = window.location.hash;
+    const pathname = window.location.pathname;
+    
+    // Don't redirect if we're on the reset password page
+    if (pathname === '/auth/reset-password') {
+      return;
+    }
+    
+    // Don't redirect if there's a recovery token (password reset flow)
+    if (hash && (hash.includes('type=recovery') || hash.includes('access_token'))) {
+      return;
     }
     
     if (!authLoading && user) {
