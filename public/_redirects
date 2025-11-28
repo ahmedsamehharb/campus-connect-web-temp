@@ -1,0 +1,5 @@
+# Netlify redirects
+# This file ensures password reset redirects work correctly
+
+/auth/reset-password  /auth/reset-password  200
+

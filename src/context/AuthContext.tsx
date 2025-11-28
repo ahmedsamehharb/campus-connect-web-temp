@@ -87,6 +87,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       
       console.log('Auth state changed:', event, session ? 'has session' : 'no session');
       
+      // Check if we're in password reset mode - don't set user if we are
+      const isPasswordReset = typeof window !== 'undefined' && (
+        sessionStorage.getItem('isPasswordReset') === 'true' ||
+        window.location.pathname === '/auth/reset-password' ||
+        (window.location.hash && (window.location.hash.includes('type=recovery') || window.location.hash.includes('access_token')))
+      );
+      
+      // If this is a password recovery event, set the flag
+      if (event === 'PASSWORD_RECOVERY' || (session && isPasswordReset)) {
+        if (typeof window !== 'undefined') {
+          sessionStorage.setItem('isPasswordReset', 'true');
+        }
+      }
+      
       setSession(session);
       setUser(session?.user ?? null);
       setLoading(false);
