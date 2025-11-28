@@ -19,6 +19,11 @@ if (typeof window !== 'undefined') {
   if (pathname === '/' && hash && (hash.includes('type=recovery') || hash.includes('access_token'))) {
     window.location.replace(`/auth/reset-password${hash}`);
   }
+  
+  // If we're on reset password page, set a flag to prevent dashboard redirects
+  if (pathname === '/auth/reset-password') {
+    sessionStorage.setItem('isPasswordReset', 'true');
+  }
 }
 
 export default function LoginPage() {
@@ -53,6 +58,7 @@ export default function LoginPage() {
     
     const hash = window.location.hash;
     const pathname = window.location.pathname;
+    const isPasswordReset = sessionStorage.getItem('isPasswordReset') === 'true';
     
     // Don't redirect if we're on the reset password page
     if (pathname === '/auth/reset-password') {
@@ -61,6 +67,11 @@ export default function LoginPage() {
     
     // Don't redirect if there's a recovery token (password reset flow)
     if (hash && (hash.includes('type=recovery') || hash.includes('access_token'))) {
+      return;
+    }
+    
+    // Don't redirect if password reset flag is set
+    if (isPasswordReset) {
       return;
     }
     

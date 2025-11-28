@@ -27,12 +27,18 @@ function ResetPasswordContent() {
 
   // Prevent any redirects while on reset password page
   useEffect(() => {
-    // This ensures we stay on this page even if auth state changes
-    const currentPath = window.location.pathname;
-    if (currentPath !== '/auth/reset-password') {
-      return;
+    // Set flag to prevent dashboard redirects
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('isPasswordReset', 'true');
     }
-  }, []);
+    
+    // Clean up flag when component unmounts (after successful password reset)
+    return () => {
+      if (typeof window !== 'undefined' && status === 'success') {
+        sessionStorage.removeItem('isPasswordReset');
+      }
+    };
+  }, [status]);
 
   useEffect(() => {
     const verifyResetToken = async () => {
@@ -167,6 +173,11 @@ function ResetPasswordContent() {
       if (data?.user) {
         setStatus('success');
         setMessage('Your password has been successfully updated!');
+        
+        // Clear the password reset flag
+        if (typeof window !== 'undefined') {
+          sessionStorage.removeItem('isPasswordReset');
+        }
         
         // Redirect to login after 2 seconds
         setTimeout(() => {
