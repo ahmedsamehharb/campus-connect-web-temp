@@ -14,6 +14,19 @@ export default function LoginPage() {
   const router = useRouter();
   const { signIn, signUp, loading: authLoading, user } = useAuth();
 
+  // Check for password reset token in hash and redirect to reset page
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash;
+      // Check if this is a password reset link (has recovery token in hash)
+      if (hash && (hash.includes('type=recovery') || hash.includes('access_token'))) {
+        // Redirect to reset password page with the hash
+        window.location.href = `/auth/reset-password${hash}`;
+        return;
+      }
+    }
+  }, []);
+
   // Redirect authenticated users to dashboard
   useEffect(() => {
     if (!authLoading && user) {
