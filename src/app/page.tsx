@@ -10,6 +10,17 @@ import PageTransition from '@/components/PageTransition';
 import { useAuth } from '@/context/AuthContext';
 import styles from './page.module.css';
 
+// Check for password reset token immediately on page load (before React renders)
+if (typeof window !== 'undefined') {
+  const hash = window.location.hash;
+  const pathname = window.location.pathname;
+  
+  // If we're on root with a recovery token, redirect immediately
+  if (pathname === '/' && hash && (hash.includes('type=recovery') || hash.includes('access_token'))) {
+    window.location.replace(`/auth/reset-password${hash}`);
+  }
+}
+
 export default function LoginPage() {
   const router = useRouter();
   const { signIn, signUp, loading: authLoading, user } = useAuth();
