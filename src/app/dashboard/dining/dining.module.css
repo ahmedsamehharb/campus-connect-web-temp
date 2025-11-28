@@ -1,0 +1,315 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.header h1 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.header p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+/* Balance Card */
+.balanceCard {
+  padding: var(--space-lg);
+  background: var(--gradient-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+}
+
+.balanceInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  color: var(--color-primary);
+}
+
+.balanceInfo > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.balanceLabel {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.balanceValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.balanceProgress {
+  height: 8px;
+  background: var(--color-surface-elevated);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.balanceFill {
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+}
+
+/* Section */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.section h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* Location List */
+.locationList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.locationCard {
+  position: relative;
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(108, 99, 255, 0.1);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.locationCard:hover,
+.locationCard.selected {
+  border-color: rgba(108, 99, 255, 0.3);
+}
+
+.locationHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-sm);
+}
+
+.locationInfo h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+
+.locationHours {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.crowdIndicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.locationMeta {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.waitTime {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.mealPlanBadge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  background: rgba(108, 99, 255, 0.15);
+  color: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+.chevron {
+  position: absolute;
+  right: var(--space-md);
+  top: var(--space-md);
+  color: var(--color-text-muted);
+  transition: transform var(--transition-fast);
+}
+
+.chevron.rotated {
+  transform: rotate(90deg);
+}
+
+/* Menu Section */
+.menuSection {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(108, 99, 255, 0.1);
+}
+
+.menuSection h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.menuItem {
+  padding: var(--space-sm);
+  background: var(--color-surface-elevated);
+  border-radius: var(--radius-md);
+}
+
+.menuItemHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.menuItemName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.menuItemPrice {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.menuItemDesc {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.menuItemMeta {
+  display: flex;
+  gap: var(--space-md);
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: #FFB800;
+}
+
+.sustainable {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: #4CAF50;
+}
+
+.allergens {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.7rem;
+  color: var(--color-accent);
+  margin-bottom: var(--space-xs);
+}
+
+.dietary {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.dietaryBadge {
+  font-size: 0.6rem;
+  padding: 2px 6px;
+  background: rgba(76, 175, 80, 0.15);
+  color: #4CAF50;
+  border-radius: var(--radius-sm);
+  text-transform: capitalize;
+}
+
+/* Peak Hours */
+.peakHours {
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(108, 99, 255, 0.1);
+}
+
+.peakChart {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 80px;
+  margin-bottom: var(--space-sm);
+}
+
+.peakBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.peakFill {
+  width: 100%;
+  max-width: 16px;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  transition: height var(--transition-base);
+}
+
+.peakBar span {
+  font-size: 0.6rem;
+  color: var(--color-text-muted);
+}
+
+.peakLegend {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+.peakLegend span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+

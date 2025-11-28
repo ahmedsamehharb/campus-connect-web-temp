@@ -1,0 +1,355 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.header h1 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.header p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+/* Section */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.section h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.refreshBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: #4CAF50;
+  font-weight: 500;
+}
+
+.refreshBtn svg {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Route List */
+.routeList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.routeCard {
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(108, 99, 255, 0.1);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.routeCard:hover {
+  border-color: rgba(108, 99, 255, 0.3);
+}
+
+.routeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-md);
+}
+
+.routeInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.routeColor {
+  width: 4px;
+  height: 36px;
+  border-radius: var(--radius-full);
+}
+
+.routeInfo h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.routeFrequency {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.statusBadge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  text-transform: capitalize;
+}
+
+.statusBadge.ontime {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4CAF50;
+}
+
+.statusBadge.delayed {
+  background: rgba(255, 152, 0, 0.15);
+  color: #FF9800;
+}
+
+.statusBadge.outofservice {
+  background: rgba(255, 107, 107, 0.15);
+  color: #FF6B6B;
+}
+
+/* Arrival Info */
+.arrivalInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.nextArrival {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-primary);
+}
+
+.arrivalTime {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.arrivalLabel {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.delayInfo {
+  font-size: 0.75rem;
+  color: #FF9800;
+  font-weight: 500;
+}
+
+.currentLocation {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+/* Stops Preview */
+.stopsPreview {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  overflow-x: auto;
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(108, 99, 255, 0.1);
+}
+
+.stopDot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 60px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--color-surface-elevated);
+}
+
+.stopDot span {
+  font-size: 0.6rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.moreStops {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  margin-left: var(--space-xs);
+}
+
+/* Parking Grid */
+.parkingGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.parkingCard {
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(108, 99, 255, 0.1);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.parkingCard:hover {
+  border-color: rgba(108, 99, 255, 0.3);
+}
+
+.parkingCard.almostFull {
+  border-color: rgba(255, 107, 107, 0.3);
+}
+
+.parkingHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-sm);
+}
+
+.parkingHeader h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.typeBadge {
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  text-transform: capitalize;
+}
+
+.typeBadge.student {
+  background: rgba(108, 99, 255, 0.15);
+  color: var(--color-primary);
+}
+
+.typeBadge.faculty {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4CAF50;
+}
+
+.typeBadge.visitor {
+  background: rgba(255, 152, 0, 0.15);
+  color: #FF9800;
+}
+
+.spotsInfo {
+  margin-bottom: var(--space-sm);
+}
+
+.spotsAvailable {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.spotsAvailable.low {
+  color: var(--color-accent);
+}
+
+.spotsLabel {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+.parkingProgress {
+  height: 6px;
+  background: var(--color-surface-elevated);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--space-sm);
+}
+
+.parkingFill {
+  height: 100%;
+  border-radius: var(--radius-full);
+}
+
+.parkingMeta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+.parkingMeta span {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Quick Actions */
+.quickActions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+}
+
+.quickAction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(108, 99, 255, 0.1);
+  color: var(--color-primary);
+  transition: all var(--transition-fast);
+}
+
+.quickAction:hover {
+  border-color: rgba(108, 99, 255, 0.3);
+  background: var(--color-surface-elevated);
+}
+
+.quickAction span {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.actionSubtext {
+  font-size: 0.65rem !important;
+  color: var(--color-text-muted) !important;
+}
+

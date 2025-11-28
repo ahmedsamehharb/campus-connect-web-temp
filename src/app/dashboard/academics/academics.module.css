@@ -1,0 +1,454 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.header h1 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.header p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: var(--space-xs);
+  padding: var(--space-xs);
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow-x: auto;
+}
+
+.tab {
+  flex: 1;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.tab:hover {
+  color: var(--color-text-primary);
+}
+
+.tab.active {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+/* Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* GPA Grid */
+.gpaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.gpaCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.gpaIcon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 58, 138, 0.1);
+  border-radius: var(--radius-md);
+  color: var(--color-primary);
+}
+
+.gpaInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.gpaValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.gpaLabel {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* Stats Row */
+.statsRow {
+  display: flex;
+  justify-content: space-around;
+  padding: var(--space-md);
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: var(--color-primary);
+}
+
+.statNum {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.statText {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+/* Section */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.section h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* Course List */
+.courseList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.courseCard {
+  position: relative;
+  padding: var(--space-md);
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.courseCard:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.courseHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-xs);
+}
+
+.courseCode {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  background: var(--gradient-primary);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.courseDifficulty {
+  display: flex;
+  gap: 3px;
+}
+
+.diffDot {
+  width: 6px;
+  height: 6px;
+  background: var(--color-warning);
+  border-radius: 50%;
+}
+
+.courseName {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+
+.courseProfessor {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: #F59E0B;
+}
+
+.courseMeta {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.courseMeta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chevron {
+  position: absolute;
+  right: var(--space-md);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+}
+
+.statusBadge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+}
+
+.statusBadge.enrolled {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22C55E;
+}
+
+.statusBadge.available {
+  background: rgba(59, 130, 246, 0.15);
+  color: #3B82F6;
+}
+
+.statusBadge.waitlist {
+  background: rgba(245, 158, 11, 0.15);
+  color: #F59E0B;
+}
+
+.statusBadge.completed {
+  background: rgba(30, 58, 138, 0.15);
+  color: var(--color-primary);
+}
+
+/* Progress Card */
+.progressCard {
+  padding: var(--space-md);
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+  font-size: 0.9rem;
+  color: var(--color-text-primary);
+}
+
+.progressBar {
+  height: 8px;
+  background: var(--color-background);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--space-sm);
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+}
+
+.progressInfo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* Grades List */
+.gradesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.gradeCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md);
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.gradeLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.gradeCode {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.gradeName {
+  font-size: 0.9rem;
+  color: var(--color-text-primary);
+}
+
+.gradeSemester {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+.gradeRight {
+  text-align: right;
+}
+
+.gradeLetter {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.gradeCredits {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+/* Assignment List */
+.assignmentList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.assignmentCard {
+  position: relative;
+  padding: var(--space-md);
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.assignmentCard.urgent {
+  border-left: 3px solid var(--color-error);
+}
+
+.assignmentHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-xs);
+}
+
+.assignmentCourse {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.typeBadge {
+  font-size: 0.65rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-background);
+  color: var(--color-text-secondary);
+}
+
+.typeBadge.exam {
+  background: rgba(239, 68, 68, 0.1);
+  color: #EF4444;
+}
+
+.typeBadge.project {
+  background: rgba(30, 58, 138, 0.1);
+  color: var(--color-primary);
+}
+
+.assignmentTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.assignmentDesc {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-sm);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.assignmentMeta {
+  display: flex;
+  gap: var(--space-md);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.assignmentMeta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.urgentText {
+  color: var(--color-error) !important;
+  font-weight: 600;
+}
+
+.urgentBanner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  background: var(--color-error);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 0 var(--radius-lg) 0 var(--radius-md);
+}
