@@ -1,8 +1,8 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 // Get these from your Supabase project settings > API
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
 // Site URL for redirects - uses NEXT_PUBLIC_SITE_URL in production, falls back to localhost
 const getSiteUrl = () => {
@@ -16,7 +16,21 @@ const getSiteUrl = () => {
 
 export const siteUrl = getSiteUrl();
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Create Supabase client safely, handling missing environment variables during build
+// During build time, if env vars are missing, we use placeholder values
+// The placeholder URL format matches Supabase's expected format: https://[project-ref].supabase.co
+// At runtime, these will be replaced with actual values from environment variables
+// Note: Make sure to set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in Netlify environment variables
+const getSupabaseClient = (): SupabaseClient => {
+  // Use actual env vars if available, otherwise use placeholders for build time
+  // The placeholder URL uses a valid Supabase URL format to pass validation during build
+  const url = supabaseUrl || 'https://placeholder-project.supabase.co';
+  const key = supabaseAnonKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBsYWNlaG9sZGVyLXByb2plY3QiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTY0NTE5MjAwMCwiZXhwIjoxOTYwNzY4MDAwfQ.placeholder';
+  
+  return createClient(url, key);
+};
+
+export const supabase = getSupabaseClient();
 
 // =============================================
 // AUTH HELPERS

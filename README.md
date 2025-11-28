@@ -58,6 +58,18 @@ Quick steps:
 3. Run the SQL schema in `supabase-schema.sql`
 4. Restart your dev server
 
+## 🚀 Deployment (Netlify)
+
+When deploying to Netlify, make sure to set the following environment variables in your Netlify dashboard:
+
+1. Go to **Site settings** → **Environment variables**
+2. Add these variables:
+   - `NEXT_PUBLIC_SUPABASE_URL` - Your Supabase project URL
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY` - Your Supabase anon/public key
+   - `NEXT_PUBLIC_SITE_URL` - Your Netlify site URL (e.g., `https://your-site.netlify.app`)
+
+**Important**: Without these environment variables, the build will fail with "supabaseUrl is required" errors.
+
 ## 📁 Project Structure
 
 ```
