@@ -15,6 +15,7 @@ export default function LoginPage() {
   const { signIn, signUp, loading: authLoading, user } = useAuth();
 
   // Check for password reset token in hash and redirect to reset page
+  // This must run FIRST before the authenticated user redirect
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash;
@@ -28,7 +29,16 @@ export default function LoginPage() {
   }, []);
 
   // Redirect authenticated users to dashboard
+  // BUT NOT if they have a password reset token in the URL
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash;
+      // Don't redirect if there's a recovery token (password reset flow)
+      if (hash && (hash.includes('type=recovery') || hash.includes('access_token'))) {
+        return;
+      }
+    }
+    
     if (!authLoading && user) {
       window.location.href = '/dashboard';
     }
